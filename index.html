@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    
     <title>vue-boolzapp</title>
 </head>
 <body>
@@ -19,7 +21,7 @@
                 <div class="header-aside">
                     <div class="profile">
                         <div class="image-profile">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
+                            <img src="img/avatar_io.jpg" alt="foto profilo">
                             <span>Sofia</span>
                         </div>
                         
@@ -52,116 +54,19 @@
                     </form>
                 </div>
                 <div class="contact-container">
-                    <div class="contact">
+                    <div @click="selectChat(index)" v-for=" (contact,index) in contacts" class="contact">
                         <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
+                            <img :src="`img/avatar${contact.avatar}.jpg`" alt="foto profilo">
                             
                         </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
+                        <div  class="contact-text">
+                            <h3>{{contact.name}}</h3>
+                            <span v-for="contact in contacts[index].messages">
+                                {{contact.message}}
+                            </span>
                         </div>
                     </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
-                    <div class="contact">
-                        <div class="image-contact">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            
-                        </div>
-                        <div class="contact-text">
-                            <h3>Sofia</h3>
-                            <span>Ultimo messaggio inviato</span>
-                        </div>
-                    </div>
+                    
                 
                 </div>
             </aside>
@@ -170,8 +75,8 @@
                 <div class="header-right">
                     <div class="profile">
                         <div class="image-profile">
-                            <img src="img/vettore-utente-social-meavatar.jpg" alt="foto profilo">
-                            <span>Sofia</span>
+                            <img :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="foto profilo">
+                            <span>{{contacts[activeContact].name}}</span>
                         </div>
                         
                         <div class="profile-icon">
@@ -183,7 +88,19 @@
                     </div>
 
                 </div>
-                <div class="main-right"></div>
+                <div class="main-right">
+                    <div class="message-box">
+                        <div class="chat-sent">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate modi eligendi rem possimus similique consequatur aut tenetur esse repellat, nostrum obcaecati non aperiam eaque id asperiores, fugiat minima vel.
+                        </div>
+                        
+                    </div>
+                    <div class="message-box-received">
+                        <div class="chat-received">{{contacts[activeContact].messages[0]}}</div>
+                    </div>
+
+                        
+                </div>
                 <!--SEZIONE MESSAGGIO-->
                 <div class="footer-right">
                     <i class="fa-regular fa-face-smile"></i>
@@ -194,6 +111,6 @@
 
         </div>
     </div>
-    
+    <script src="js/contacts-boolzapp.js"></script>
 </body>
 </html>

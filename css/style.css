@@ -164,10 +164,13 @@ header{
     font-size: 20px;
     
     
+    
 }
 
 .contact .contact-text span{
     color: #b1b1b1;
+    font-size: 15px;
+    padding: 5px;
 }
 
 
@@ -231,9 +234,45 @@ header{
 
 
 .main-right{
+    padding-top: 50px;
     width: 100%;
     height: calc(100% - 160px);
     overflow-y: scroll;
+}
+
+.main-right .message-box{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    padding: 0 20px;
+    
+    
+}
+.message-box-received{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding: 0 20px;
+
+}
+
+.message-box-received .chat-received{
+    width: 30%;
+    display: flex;
+    justify-content: right;
+    background-color: #f3f5f1;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+
+.message-box .chat-sent{
+    width: 30%;
+    display: flex;
+    justify-content: right;
+    background-color: #d5f9ba;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 .footer-right{
