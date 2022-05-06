@@ -6,6 +6,7 @@
 
 body{
     background-color: #dadbd3;
+    
 }
 
 header{
@@ -148,6 +149,7 @@ header{
 
 
 
+
 .contact-container .contact{
     display: flex;
     width: 100%;
@@ -156,6 +158,12 @@ header{
     
     border-bottom: 1px solid rgb(199, 198, 198);
 }
+
+.contact-container .contact:hover{
+    cursor: pointer;
+    background-color: #d6d4d4;
+}
+
 
 .contact .image-contact,
 .contact .contact-text
@@ -245,6 +253,7 @@ header{
     display: flex;
     justify-content: right;
     padding: 0 20px;
+    margin: 10px 0;
     
     
 }
@@ -253,13 +262,14 @@ header{
     display: flex;
     justify-content: left;
     padding: 0 20px;
+    margin: 10px 0;
 
 }
 
 .message-box-received .chat-received{
     width: 30%;
     display: flex;
-    justify-content: right;
+    justify-content: left;
     background-color: #f3f5f1;
     padding: 15px;
     border-radius: 10px;

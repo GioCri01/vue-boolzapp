@@ -61,7 +61,7 @@
                         </div>
                         <div  class="contact-text">
                             <h3>{{contact.name}}</h3>
-                            <span v-for="contact in contacts[index].messages">
+                            <span v-for="(contact,index) in contacts[index].messages">
                                 {{contact.message}}
                             </span>
                         </div>
@@ -89,14 +89,14 @@
 
                 </div>
                 <div class="main-right">
-                    <div class="message-box">
-                        <div class="chat-sent">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet voluptate modi eligendi rem possimus similique consequatur aut tenetur esse repellat, nostrum obcaecati non aperiam eaque id asperiores, fugiat minima vel.
-                        </div>
+                    <div v-for="(messages, index) in contacts[activeContact].messages" class="message-box">
+                        <div v-if="messages.status === 'sent'" class="chat-sent">{{messages.message}}</div
+                            
+                        >
                         
                     </div>
-                    <div class="message-box-received">
-                        <div class="chat-received">{{contacts[activeContact].messages[0]}}</div>
+                    <div  v-for="(messages, index) in contacts[activeContact].messages" class="message-box-received">
+                        <div v-if="messages.status === 'received'" class="chat-received">{{messages.message}}</div>
                     </div>
 
                         
