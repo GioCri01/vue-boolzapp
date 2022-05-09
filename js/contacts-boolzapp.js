@@ -3,6 +3,11 @@ const app = new Vue({
 
     data:{
         activeContact:0,
+        messageValueInput:"",
+        userSearch:"",
+        lastMessage : "",
+        
+
         contacts: [
             {
                 name: 'Michele',
@@ -174,7 +179,60 @@ const app = new Vue({
             this.activeContact = index;
             
         },
+
+        sentMessage(){
+           userMessage= {
+            
+            
+                
+                    date: '10/01/2020 15:30:55',
+                    message: this.messageValueInput,
+                    status: 'sent'
+                };
+                
+                if(this. messageValueInput.length >= 1){
+                    this.contacts[this.activeContact].messages.push(userMessage);
+                    this.messageValueInput= "";
+                };
+
+                setTimeout(()=>{
+                    botMessageReceived = {
+                        date: '10/01/2020 15:30:55',
+                        message: "ok",
+                        status: 'received'
+                    },
+                    this.contacts[this.activeContact].messages.push(botMessageReceived);
+                },2000);
+                
+                
+                
+            
+        
+            
+
+                
+            
+                            
+
+        },
+
+        
+
+        getLastMessage(contact){
+            return contact.messages[contact.messages.length -1].message;
+        },
+        getLastDate(contact){
+            return contact.messages[contact.messages.length -1].date;
+        }
+
+       
+
+       
     }
+
+    
+
+    
     
 })
 

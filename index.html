@@ -49,23 +49,30 @@
                 <div class="search-container">
                     <form >
                         <button type="submit"><i class="fa fa-search"></i></button>
-                        <input type="text" placeholder="Search.." name="search">
+                        <input   v-model="userSearch"type="text" placeholder="Search.." >
                       
                     </form>
                 </div>
-                <div class="contact-container">
-                    <div @click="selectChat(index)" v-for=" (contact,index) in contacts" class="contact">
+                <div  class="contact-container">
+                    <div v-if=" contact.name.toLowerCase().includes(userSearch)"  @click="selectChat(index)" v-for=" (contact,index) in contacts" class="contact" >
                         <div class="image-contact">
                             <img :src="`img/avatar${contact.avatar}.jpg`" alt="foto profilo">
                             
                         </div>
                         <div  class="contact-text">
                             <h3>{{contact.name}}</h3>
-                            <span v-for="(contact,index) in contacts[index].messages">
-                                {{contact.message}}
+                            
+                            <span>
+                                {{getLastMessage(contact)}}
                             </span>
+                            <div class="data"><small>{{getLastDate(contact)}}</small></div>
                         </div>
+                        
                     </div>
+                    
+                    
+                    
+                    
                     
                 
                 </div>
@@ -76,7 +83,8 @@
                     <div class="profile">
                         <div class="image-profile">
                             <img :src="`img/avatar${contacts[activeContact].avatar}.jpg`" alt="foto profilo">
-                            <span>{{contacts[activeContact].name}}</span>
+                            <span>{{contacts[activeContact].name}}<br> <span>Ultimo accesso oggi alle :</span></span> 
+                            
                         </div>
                         
                         <div class="profile-icon">
@@ -89,22 +97,22 @@
 
                 </div>
                 <div class="main-right">
-                    <div v-for="(messages, index) in contacts[activeContact].messages" class="message-box">
-                        <div v-if="messages.status === 'sent'" class="chat-sent">{{messages.message}}</div
-                            
-                        >
+                    <div v-for="(messages, index) in contacts[activeContact].messages" class="" :class="messages.status === 'sent' ?'message-box':'message-box-received'">
+                        <div  :class="messages.status === 'sent' ?'chat-sent':'chat-received'">{{messages.message}}</div >
+                    </div>
+
+                    
+                    
                         
-                    </div>
-                    <div  v-for="(messages, index) in contacts[activeContact].messages" class="message-box-received">
-                        <div v-if="messages.status === 'received'" class="chat-received">{{messages.message}}</div>
-                    </div>
+                    
+                    
 
                         
                 </div>
                 <!--SEZIONE MESSAGGIO-->
                 <div class="footer-right">
                     <i class="fa-regular fa-face-smile"></i>
-                    <input type="text" placeholder="Search.." name="search">
+                    <input @keyup.enter="sentMessage()" v-model="messageValueInput" type="text" placeholder="Invia messaggio.." >
                     <i class="fa-solid fa-microphone"></i>
                 </div>
             </div>
